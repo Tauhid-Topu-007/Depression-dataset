@@ -1,0 +1,18 @@
+Feature,Importance
+History of Mental Illness_Yes,0.34498292
+History of Substance Abuse_Yes,0.12827884
+Family History of Depression_Yes,0.1170285
+Alcohol Consumption,0.08727903
+Sleep Patterns,0.065831065
+Chronic Medical Conditions_Yes,0.058491223
+Employment Status_Unemployed,0.047367983
+Physical Activity Level,0.04384423
+Smoking Status,0.041489366
+Dietary Habits,0.032635864
+Marital Status_Widowed,0.009837254
+Number of Children,0.008278792
+Marital Status_Married,0.0066092433
+Education Level,0.004064636
+Income,0.0019440134
+Age,0.0012098354
+Marital Status_Single,0.0008272598

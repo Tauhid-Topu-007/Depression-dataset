@@ -1,0 +1,18 @@
+Feature,Chi2/Corr,P-Value
+Age,0.06935134854251518,0.0
+Number of Children,0.10125129062069735,0.0
+Smoking Status,0.14447824078038748,0.0
+Physical Activity Level,0.17987441132549425,0.0
+Alcohol Consumption,0.2853596793586939,0.0
+Income,0.12788958159482594,0.0
+Dietary Habits,0.1588015281840206,0.0
+Sleep Patterns,0.261852144867435,0.0
+History of Substance Abuse_Yes,41802.04820139782,0.0
+Marital Status_Single,1550.2749328812633,0.0
+Marital Status_Widowed,1706.4378561465096,0.0
+Employment Status_Unemployed,11357.25645452343,0.0
+Family History of Depression_Yes,36357.476185938256,0.0
+History of Mental Illness_Yes,118525.91604757993,0.0
+Chronic Medical Conditions_Yes,10513.334958583866,0.0
+Education Level,0.031404101976198126,8.74927537458391e-91
+Marital Status_Married,123.4758600410508,1.097129718045705e-28
