@@ -1,113 +1,87 @@
-# Mental Health Risk Prediction - Machine Learning Project
+# Depression Risk Prediction Model
 
 ## 📋 Project Overview
 
-This project develops a comprehensive machine learning model to predict mental health risk levels based on demographic, lifestyle, and medical history factors. The model achieves **100% accuracy** using optimized feature selection and hyperparameter tuning, with Logistic Regression emerging as the best performer.
+This project develops a machine learning model to predict depression risk using socio-demographic and lifestyle factors. The model achieves **80.7% balanced accuracy**, representing a **21.8% improvement** over the baseline model through advanced feature engineering, ensemble methods, and optimization techniques.
 
----
+## 🎯 Key Achievements
 
-## 🎯 Key Results
+| Metric | Baseline | Final Model | Improvement |
+|--------|----------|-------------|-------------|
+| Balanced Accuracy | 58.9% | **80.7%** | **+21.8%** |
+| AUC Score | 0.611 | **0.884** | **+0.273** |
+| F1-Score | 0.491 | **0.791** | **+0.300** |
+| MCC | 0.193 | **0.610** | **+0.417** |
 
-| Metric | Value |
-|--------|-------|
-| **Best Model** | Logistic Regression |
-| **Test Accuracy** | 100.00% |
-| **F1-Score** | 1.0000 |
-| **AUC Score** | 1.0000 |
-| **Balanced Accuracy** | 100.00% |
+## 🗂️ Dataset
 
----
+The dataset contains **18,345** records with **16** features including:
 
-## 📊 Dataset Overview
+- **Demographics**: Age, Marital Status, Education Level
+- **Lifestyle**: Smoking Status, Physical Activity, Alcohol Consumption
+- **Socioeconomic**: Income, Employment Status
+- **Health History**: Mental Illness, Substance Abuse, Chronic Medical Conditions
 
-| Property | Value |
-|----------|-------|
-| Total Records | 45,858 |
-| Original Features | 16 |
-| Features After Reduction | 15 |
-| Target Classes | Low Risk (0) / High Risk (1) |
-| Class Distribution (Low Risk) | 57.61% |
-| Class Distribution (High Risk) | 42.39% |
+**Note**: Target variable was synthetically created from clinical history features for demonstration purposes.
 
----
+## 🚀 Methodology
 
-## 🔬 Feature Engineering
+### 1. Data Preprocessing
+- Ordinal encoding for categorical variables (Education, Physical Activity, etc.)
+- One-hot encoding for nominal features (Marital Status, Employment Status)
+- Outlier capping using 3×IQR method
+- Variance threshold filtering (0.01 threshold)
 
-### Risk Score Calculation
+### 2. Feature Engineering
+- **Polynomial features** for top predictive variables
+- **Interaction terms** between key features
+- **Domain-specific features**:
+  - Age² and Age_Log transformations
+  - Combined risk scores
+  - Children grouping and indicators
 
-The target variable `Mental_Health_Risk` was created using a weighted risk score:
+### 3. Handling Class Imbalance
+- Original dataset: 11.2:1 imbalance ratio
+- **Borderline-SMOTE** sampling (best performer)
+- SMOTE-Tomek for combined sampling
 
-| Risk Factor | Weight |
-|-------------|--------|
-| History of Mental Illness | 3 |
-| Family History of Depression | 2 |
-| History of Substance Abuse | 2 |
-| High Alcohol Consumption | 2 |
-| Poor Sleep Patterns | 2 |
-| Unhealthy Dietary Habits | 1 |
-| Sedentary Lifestyle | 1 |
-| Current Smoking | 1 |
-| Chronic Medical Conditions | 1 |
-| Former Smoking | 0.5 |
-| Moderate Alcohol Consumption | 1 |
-| Fair Sleep Patterns | 1 |
+### 4. Models Tested
 
-### Feature Reduction (Based on Correlation Matrix)
+| Model | Balanced Accuracy | AUC |
+|-------|------------------|-----|
+| Logistic Regression | 58.9% | 0.611 |
+| Decision Tree | 59.4% | 0.627 |
+| Gradient Boost | 60.5% | 0.649 |
+| XGBoost | 50.0% | 0.645 |
+| MLP Classifier | 60.1% | 0.641 |
+| **Random Forest (Tuned)** | **67.6%** | **0.749** |
+| Voting Classifier | 78.8% | 0.874 |
+| Stacking Classifier | 80.2% | 0.879 |
+| **Random Forest (Advanced)** | **80.7%** | **0.884** |
 
-Highly correlated features were removed to avoid multicollinearity:
+### 5. Advanced Techniques
+- **Hyperparameter Tuning**: RandomizedSearchCV with 5-fold CV
+- **Feature Selection**: RFECV with Random Forest
+- **Ensemble Methods**:
+  - Soft Voting Classifier (RF, GB, XGB)
+  - Stacking Classifier with Logistic Regression meta-learner
+- **Deep Learning**: TensorFlow neural network with:
+  - Batch normalization
+  - Dropout regularization (0.3, 0.2, 0.1)
+  - Early stopping & ReduceLROnPlateau callbacks
 
-| Removed Feature | Correlation | Reason |
-|----------------|-------------|--------|
-| Marital Status_Single | -0.60 (with Age) | High negative correlation |
-| Marital Status_Widowed | -0.48 (with Age) | High negative correlation |
+## 📊 Best Model Details
 
-### Final Feature Set (15 Features)
+**Random Forest Tuned** (Best performing)
 
-| Feature Type | Features |
-|--------------|----------|
-| **Demographic** | Age, Education Level, Number of Children |
-| **Lifestyle** | Smoking Status, Physical Activity Level, Alcohol Consumption, Dietary Habits, Sleep Patterns |
-| **Socioeconomic** | Income, Marital Status_Married, Employment Status_Unemployed |
-| **Medical History** | History of Mental Illness_Yes, History of Substance Abuse_Yes, Family History of Depression_Yes, Chronic Medical Conditions_Yes |
-
----
-
-## 🤖 Models Evaluated
-
-| Model | Test Accuracy | Balanced Accuracy | F1-Score | AUC | MCC |
-|-------|--------------|-------------------|----------|-----|-----|
-| **Logistic Regression** | **100.00%** | **100.00%** | **1.0000** | **1.0000** | **1.0000** |
-| MLP Classifier | 100.00% | 100.00% | 1.0000 | 1.0000 | 1.0000 |
-| XGBoost | 99.97% | 99.97% | 0.9997 | 1.0000 | 0.9994 |
-| Gradient Boost | 99.86% | 99.86% | 0.9986 | 0.9999 | 0.9972 |
-| Random Forest | 99.24% | 99.24% | 0.9924 | 0.9997 | 0.9849 |
-| Decision Tree | 97.85% | 97.85% | 0.9787 | 0.9965 | 0.9571 |
-
----
-
-## 🏆 Top Risk Factors (Logistic Regression Coefficients)
-
-| Rank | Feature | Coefficient Magnitude |
-|------|---------|----------------------|
-| 1 | History of Mental Illness_Yes | 8.3996 |
-| 2 | History of Substance Abuse_Yes | 5.5535 |
-| 3 | Family History of Depression_Yes | 5.3458 |
-| 4 | Alcohol Consumption | 4.2965 |
-| 5 | Sleep Patterns | 4.0946 |
-| 6 | Chronic Medical Conditions_Yes | 2.7741 |
-| 7 | Physical Activity Level | 2.1513 |
-| 8 | Smoking Status | 2.0318 |
-| 9 | Dietary Habits | 1.9117 |
-| 10 | Education Level | 0.0464 |
-
----
-
-## 🔧 Hyperparameter Tuning Results
-
-### Logistic Regression (Best Model)
+### Hyperparameters:
 ```python
 {
-    'C': 0.1,
-    'penalty': 'l2',
-    'solver': 'lbfgs'
-}
+    'n_estimators': 300,
+    'min_samples_split': 5,
+    'min_samples_leaf': 1,
+    'max_features': 'sqrt',
+    'max_depth': None,
+    'bootstrap': False,
+    'class_weight': 'balanced'
+}```
