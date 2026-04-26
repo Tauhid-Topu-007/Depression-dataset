@@ -1,16 +1,7 @@
 Feature,Importance
-History of Mental Illness_Yes,8.39964039055954
-History of Substance Abuse_Yes,5.553492712653345
-Family History of Depression_Yes,5.345750520201541
-Alcohol Consumption,4.296538305997335
-Sleep Patterns,4.094629691687439
-Chronic Medical Conditions_Yes,2.7741474062797753
-Physical Activity Level,2.1512626893197604
-Smoking Status,2.031762817542321
-Dietary Habits,1.9117021807552583
-Education Level,0.04643312348767912
-Age,0.03679595360835653
-Employment Status_Unemployed,0.03367699142315645
-Number of Children,0.014414817546513763
-Income,0.010990028019421146
-Marital Status_Married,0.0009563786007003089
+Number of Children,0.0023355006070901905
+Employment Status_Unemployed,0.050124540199267736
+Age,0.08140465448122368
+Marital Status_Single,0.1399069129631692
+Marital Status_Married,0.16472665152556099
+Marital Status_Widowed,0.22977182933822288

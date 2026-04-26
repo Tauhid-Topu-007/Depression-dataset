@@ -1,0 +1,10 @@
+Feature,Importance
+Number of Children_Number of Children,0.23906018288810935
+Number of Children_Marital Status_Widowed,0.17268102948797343
+Combined_Risk,0.13688711903936673
+Employment Status_Unemployed,0.13290259469300209
+Age,0.0684337400699972
+Age_Log,0.06718938435952873
+Age_Age,0.06539818064861852
+Age_Squared,0.06474632391992677
+Marital Status_Married,0.05270144489347719
